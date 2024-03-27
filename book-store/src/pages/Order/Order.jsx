@@ -10,7 +10,7 @@ function Order() {
     const [selectedStatus, setSelectedStatus] = useState(0);
 
     useEffect(() => {
-        fetch('https://localhost:44372/api/Order')
+        fetch('http://localhost:5000/api/Order')
             .then(response => response.json())
             .then(data => setOrders(data))
             .catch(error => console.error('Error fetching orders:', error));
@@ -18,7 +18,7 @@ function Order() {
 
     const handleApproveOrder = async (id) => {
         try {
-            const response = await axios.put(`https://localhost:44372/api/Order/id=${id}`);
+            const response = await axios.put(`http://localhost:5000/api/Order/id=${id}`);
             if (response.data) {
                 setSelectedOrder(response.data);
                 setSelectedStatus(response.data.Status);

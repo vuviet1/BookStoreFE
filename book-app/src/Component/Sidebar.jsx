@@ -9,7 +9,7 @@ function Sidebar() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('https://localhost:44372/api/Category');
+                const response = await axios.get('https://localhost:5000/api/Category');
                 setCategories(response.data); // assuming response.data is an array of categories
             } catch (error) {
                 console.error('Error fetching data:', error);
@@ -29,7 +29,7 @@ function Sidebar() {
 
                 // Lấy dữ liệu subsubcategories cho từng category
                 await Promise.all(categories.map(async (category) => {
-                    const response = await axios.get(`https://localhost:44372/api/Category/subcategories/id=${category.Id}`);
+                    const response = await axios.get(`https://localhost:5000/api/Category/subcategories/id=${category.Id}`);
                     subsubcategoriesData[category.Id] = response.data;
                 }));
 
